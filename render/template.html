@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>{{ f.titulo }}</title>
+<style>{{ css }}</style>
+</head>
+<body>
+
+{% macro foot(n, label) -%}
+<div class="foot">
+  <div class="who">{{ logo|safe }}<span>{{ cfg.website }}</span></div>
+  <div class="dots">{% for i in range(4) %}<i class="{{ 'on' if i < n else '' }}"></i>{% endfor %}</div>
+  <span class="where">{{ label }}</span>
+</div>
+{%- endmacro %}
+
+{% if mode == "carousel" %}
+
+<div class="slide cover">
+  <h1>{{ f.titulo }}</h1>
+  <div class="lead">{{ s.portada|safe }}</div>
+  <div class="meta"><span>Swift {{ f.swift }}</span><span>iOS {{ f.ios_min }}+</span></div>
+  {% if diag.antes %}<div class="fig bad">{{ diag.antes|safe }}</div>{% endif %}
+  {{ foot(1, tema) }}
+</div>
+
+<div class="slide">
+  <h2>{{ labels.ejemplo }}</h2>
+  <div class="note">{{ s.ejemplo|safe }}</div>
+  <div class="code before" style="font-size:{{ px.antes }}px"><div class="fname">antes.swift</div>{{ code.antes|safe }}</div>
+  {{ foot(2, 'Ejemplo') }}
+</div>
+
+<div class="slide">
+  <h2>{{ labels.fix }}</h2>
+  <div class="note">{{ s.fix|safe }}</div>
+  <div class="code after" style="font-size:{{ px.despues }}px"><div class="fname">despues.swift</div>{{ code.despues|safe }}</div>
+  {{ foot(3, 'Propuesta') }}
+</div>
+
+<div class="slide">
+  <div class="quote">{{ fb.leccion|safe }}</div>
+  {% if diag.despues %}<div class="fig good">{{ diag.despues|safe }}</div>{% endif %}
+  <div class="reflexion">{{ fb.reflexion|safe }}</div>
+  <div class="watch"><div>{{ fb.ojo|safe }}</div></div>
+  {{ foot(4, 'Reflexión') }}
+</div>
+
+{% else %}
+
+<div class="pdf">
+  <section>
+    <div class="topic">{{ tema }} &nbsp;·&nbsp; {{ f.fecha }} &nbsp;·&nbsp; Swift {{ f.swift }} · iOS {{ f.ios_min }}+</div>
+    <h1>{{ f.titulo }}</h1>
+    <div class="lead">{{ s.portada|safe }}</div>
+    {% if diag.antes %}<div class="fig bad">{{ diag.antes|safe }}</div>{% endif %}
+  </section>
+  <section>
+    <h2>{{ labels.ejemplo }}</h2>
+    <div class="note">{{ s.ejemplo|safe }}</div>
+    <div class="code before"><div class="fname">antes.swift</div>{{ code.antes|safe }}</div>
+  </section>
+  <section>
+    <h2>{{ labels.fix }}</h2>
+    <div class="note">{{ s.fix|safe }}</div>
+    <div class="code after"><div class="fname">despues.swift</div>{{ code.despues|safe }}</div>
+  </section>
+  <section>
+    <div class="quote">{{ fb.leccion|safe }}</div>
+    {% if diag.despues %}<div class="fig good">{{ diag.despues|safe }}</div>{% endif %}
+    <div class="reflexion">{{ fb.reflexion|safe }}</div>
+    <div class="watch"><div>{{ fb.ojo|safe }}</div></div>
+    <div class="doc">{{ fb.doc|safe }}</div>
+  </section>
+</div>
+
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* ===== Tokens: dark, Apple-like ===== */
+:root {
+  --bg: #000000;
+  --card: #1c1c1e;
+  --card-2: #2c2c2e;
+  --line: #3a3a3c;
+  --text: #f5f5f7;
+  --text-2: #98989d;
+  --accent: #0a84ff;
+  --before: #ff453a;
+  --after: #30d158;
+
+  --display: "Inter Display", "Inter", -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+  --sans: "Inter", -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", Menlo, "JetBrains Mono", "DejaVu Sans Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv11", "ss01", "ss03";
+}
+a { color: var(--accent); text-decoration: none; }
+p { margin: 0 0 0.6em; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; color: var(--text); }
+em { font-style: italic; }
+code { font-family: var(--mono); font-size: 0.9em; color: var(--text); background: var(--card-2); padding: 0.05em 0.35em; border-radius: 6px; }
+
+/* ===== Código ===== */
+.code {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 0.9em 1.1em 1em 1.2em;
+  font-family: var(--mono);
+  line-height: 1.45;
+  border-left: 6px solid var(--line);
+  overflow: hidden;
+}
+.code.before { border-left-color: var(--before); }
+.code.after  { border-left-color: var(--after); }
+.code pre { margin: 0; white-space: pre; }
+.code .fname { font-size: 0.78em; color: var(--text-2); margin-bottom: 0.7em; }
+.code.before .fname { color: var(--before); }
+.code.after  .fname { color: var(--after); }
+/* Pygments → Xcode dark */
+.highlight .k, .highlight .kd, .highlight .kr, .highlight .kt, .highlight .kc { color: #fc5fa3; }
+.highlight .nc, .highlight .nn { color: #5dd8ff; }
+.highlight .nf { color: #67b7a4; }
+.highlight .n, .highlight .nv, .highlight .o, .highlight .p { color: #f5f5f7; }
+.highlight .s, .highlight .s1, .highlight .s2 { color: #fc6a5d; }
+.highlight .mi, .highlight .mf { color: #d0bf69; }
+.highlight .c, .highlight .c1, .highlight .cm { color: #7f8c98; font-style: italic; }
+.highlight .nb, .highlight .bp { color: #d0a8ff; }
+.highlight .na { color: #a167e6; }
+
+/* ===== Carrusel 1080×1350 ===== */
+.slide {
+  width: 1080px; height: 1350px;
+  padding: 88px 80px 72px;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  font-size: 31px; line-height: 1.4;
+  page-break-after: always;
+}
+.slide:last-child { page-break-after: auto; }
+
+.topic { font-size: 24px; color: var(--text-2); margin-bottom: 20px; }
+.topic b { color: var(--text); font-weight: 600; }
+
+h1 {
+  font-family: var(--display);
+  font-size: 78px; line-height: 1.04; letter-spacing: -0.035em;
+  font-weight: 700; margin: 0 0 44px;
+  text-wrap: balance;
+}
+h2 {
+  font-family: var(--display);
+  font-size: 54px; line-height: 1.08; letter-spacing: -0.03em;
+  font-weight: 650; margin: 8px 0 28px;
+}
+.lead { font-size: 34px; line-height: 1.42; color: var(--text); max-width: 880px; }
+.lead p + p { margin-top: 0.4em; }
+.note { font-size: 28px; line-height: 1.4; color: var(--text-2); margin: 0 0 28px; max-width: 880px; }
+
+.slide .code { font-size: 22px; margin-top: 8px; }
+
+.quote {
+  font-family: var(--display);
+  font-size: 52px; line-height: 1.16; letter-spacing: -0.028em; font-weight: 650;
+  margin: 12px 0 56px;
+  text-wrap: balance;
+}
+.quote code { font-size: 0.85em; }
+.watch { display: flex; gap: 20px; align-items: flex-start; font-size: 28px; line-height: 1.4; color: var(--text-2); margin-bottom: 28px; max-width: 880px; }
+.watch::before { content: ""; flex: 0 0 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-top: 15px; }
+.watch strong { color: var(--text); }
+.doc { font-size: 26px; color: var(--text-2); margin-top: 8px; }
+.doc a { color: var(--accent); }
+.reflexion { font-size: 31px; line-height: 1.45; color: var(--text); max-width: 900px; margin: 0 0 40px; }
+.reflexion p + p { margin-top: 0.6em; }
+
+.foot {
+  margin-top: auto; padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 22px; color: var(--text-2);
+}
+.foot .who { display: flex; align-items: center; gap: 16px; }
+.foot .who .logo { width: 40px; height: 40px; display: block; }
+.foot .dots { display: flex; gap: 10px; }
+.foot .dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--line); display: block; }
+.foot .dots i.on { background: var(--accent); }
+.foot .where { color: var(--accent); font-weight: 500; }
+
+.cover .author { display: flex; align-items: center; gap: 22px; margin-top: auto; padding-top: 40px; }
+.cover .avatar { width: 76px; height: 76px; border-radius: 50%; background: var(--card-2); color: var(--text); display: grid; place-items: center; font-weight: 600; font-size: 30px; font-family: var(--display); }
+.cover .author .name { font-weight: 600; font-size: 28px; }
+.cover .author .role { color: var(--text-2); font-size: 24px; }
+.cover .meta { font-size: 24px; color: var(--text-2); margin-top: 36px; display: flex; gap: 28px; }
+
+/* ===== PDF A4 (ficha de estudio) ===== */
+.pdf { font-size: 11pt; line-height: 1.5; padding: 0; }
+.pdf .topic { font-size: 9.5pt; margin-bottom: 6pt; }
+.pdf h1 { font-size: 26pt; margin: 0 0 10pt; }
+.pdf h2 { font-size: 15pt; margin: 0 0 8pt; }
+.pdf .lead { font-size: 11.5pt; max-width: none; }
+.pdf .note { font-size: 10.5pt; margin-bottom: 8pt; max-width: none; }
+.pdf section { margin: 0 0 9mm; break-inside: avoid; }
+.pdf .code { font-size: 8.6pt; border-radius: 10px; padding: 8pt 10pt 9pt 12pt; border-left-width: 4px; }
+.pdf .quote { font-size: 16pt; margin-bottom: 10pt; }
+.pdf .watch { font-size: 10.5pt; margin-bottom: 8pt; max-width: none; }
+.pdf .watch::before { margin-top: 6pt; flex-basis: 6px; height: 6px; }
+.pdf .doc { font-size: 10pt; }
+.pdf .reflexion { font-size: 11pt; max-width: none; margin-bottom: 8pt; }
+.pdf .two { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+
+/* ===== Diagramas (kit de clases para los SVG) ===== */
+.fig { margin: 36px 0 0; }
+.fig .diagram { width: 100%; height: auto; display: block; }
+.d-node { fill: var(--card); stroke: var(--line); stroke-width: 2; }
+.d-node.d-bad { fill: #2a1a19; stroke: var(--before); }
+.d-node.d-good { fill: #16261b; stroke: var(--after); }
+.d-edge { fill: none; stroke: var(--text-2); stroke-width: 3; }
+.d-edge.d-bad { stroke: var(--before); }
+.d-edge.d-good { stroke: var(--after); }
+.d-arrow { fill: var(--text-2); }
+.d-title { font-family: var(--sans); font-size: 24px; font-weight: 600; fill: var(--text); }
+.d-sub { font-family: var(--mono); font-size: 18px; fill: var(--text-2); }
+.d-label { font-family: var(--sans); font-size: 19px; font-weight: 500; fill: var(--text-2); }
+.d-label.d-bad { fill: var(--before); }
+.d-label.d-good { fill: var(--after); }
+
+.cover .fig { margin-top: auto; padding-top: 28px; max-width: 920px; }
+.slide .quote { margin: 0 0 32px; }
+.slide .fig.good { margin: 0 0 28px; max-width: 900px; }
+.slide .fig.good + .reflexion { font-size: 27px; line-height: 1.42; margin-bottom: 24px; }
+.slide .fig.good ~ .watch { font-size: 25px; margin-bottom: 16px; }
+.slide .fig.good ~ .doc { font-size: 24px; }
+.pdf .fig { margin: 6mm 0 0; max-width: 150mm; }
+.pdf .d-title { font-size: 20px; } .pdf .d-sub { font-size: 15px; } .pdf .d-label { font-size: 16px; }
